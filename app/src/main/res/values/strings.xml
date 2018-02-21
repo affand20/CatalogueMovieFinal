@@ -1,0 +1,20 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Catalogue Movie</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="language">Change Language</string>
+
+    <string name="rating">RATING</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+
+    <string name="loading">Getting data...</string>
+
+    <string name="me">Affandy Fahrizain</string>
+
+    <string name="search">Search</string>
+
+    <string name="search_hint">Input words</string>
+</resources>

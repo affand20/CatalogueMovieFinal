@@ -1,0 +1,19 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Catalogue Movie</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="language">Ganti Bahasa</string>
+
+    <string name="rating">RATING</string>
+    <string name="now_playing">Sedang Dimainkan</string>
+    <string name="upcoming">Akan Datang</string>
+
+    <string name="loading">Sedang mengambil data...</string>
+
+    <string name="me">Affandy Fahrizain</string>
+
+    <string name="search">Pencarian</string>
+    <string name="search_hint">Masukkan kata</string>
+</resources>
