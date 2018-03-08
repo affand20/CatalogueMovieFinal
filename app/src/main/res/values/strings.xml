@@ -17,4 +17,9 @@
     <string name="search">Search</string>
 
     <string name="search_hint">Input words</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="toast">Successfully added to favorite!</string>
+    <string name="first_run">first_run</string>
+    <string name="delete">Remove Favorite</string>
 </resources>

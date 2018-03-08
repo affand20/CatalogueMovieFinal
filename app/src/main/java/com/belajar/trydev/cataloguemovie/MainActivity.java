@@ -18,6 +18,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.SearchView;
 
+import com.belajar.trydev.cataloguemovie.Database.FavoriteFilmHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -49,6 +50,10 @@ public class MainActivity extends AppCompatActivity
 //                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 //        drawer.addDrawerListener(toggle);
 //        toggle.syncState();
+
+        FavoriteFilmHelper helper = new FavoriteFilmHelper(MainActivity.this);
+        helper.open();
+        helper.close();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -95,6 +100,13 @@ public class MainActivity extends AppCompatActivity
             count = 1;
         } else if (count==3){
             Fragment fragment = new UpcomingFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.content_main, fragment)
+                    .commit();
+            count = 1;
+        }else if (count==4){
+            Fragment fragment = new FavoriteFragment();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.content_main, fragment)
@@ -173,6 +185,12 @@ public class MainActivity extends AppCompatActivity
             title = getResources().getString(R.string.upcoming);
             fragment = new UpcomingFragment();
             bundle.putString(UpcomingFragment.EXTRAS, "Upcoming");
+            fragment.setArguments(bundle);
+            count = 1;
+        } else if (id == R.id.favorite_btn) {
+            title = getResources().getString(R.string.favorite);
+            fragment = new FavoriteFragment();
+            bundle.putString(UpcomingFragment.EXTRAS, "Favorite");
             fragment.setArguments(bundle);
             count = 1;
         }

@@ -3,7 +3,8 @@
     package="com.belajar.trydev.cataloguemovie">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <permission android:name="com.belajar.trydev.cataloguemovie.READ_DATABASE" android:protectionLevel="normal"/>
+    <permission android:name="com.belajar.trydev.cataloguemovie.WRITE_DATABASE" android:protectionLevel="normal"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.belajar.trydev.cataloguemovie"
+            android:name=".Provider.FilmProvider"
+            android:exported="true"
+            android:readPermission="com.belajar.trydev.cataloguemovie.READ_DATABASE"
+            android:writePermission="com.belajar.trydev.cataloguemovie.WRITE_DATABASE"/>
     </application>
 
 </manifest>

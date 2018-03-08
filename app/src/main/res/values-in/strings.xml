@@ -16,4 +16,9 @@
 
     <string name="search">Pencarian</string>
     <string name="search_hint">Masukkan kata</string>
+    <string name="favorite">Favorit</string>
+
+    <string name="toast">Berhasil menambahkan ke favorit!</string>
+    <string name="delete">Hapus dari Favorit</string>
+
 </resources>

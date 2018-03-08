@@ -2,13 +2,19 @@ package com.belajar.trydev.cataloguemovie;
 
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.belajar.trydev.cataloguemovie.Database.FavoriteFilmHelper;
+import com.belajar.trydev.cataloguemovie.Prefs.AppPreference;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -20,9 +26,14 @@ import java.util.ArrayList;
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.CategoryViewHolder> {
 
     private Context context;
+
+    FavoriteFilmHelper favoriteFilmHelper;
+    AppPreference appPreference;
+
     ArrayList<Film> getListFilm(){
         return listFilm;
     }
+
 
     void setListFilm(ArrayList<Film> listFilm){
         this.listFilm = listFilm;
@@ -41,10 +52,35 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.CategoryViewHo
     }
 
     @Override
-    public void onBindViewHolder(CategoryViewHolder holder, int position) {
+    public void onBindViewHolder(CategoryViewHolder holder, final int position) {
         holder.tvTitle.setText(getListFilm().get(position).getName());
-        holder.tvDate.setText(getListFilm().get(position).getDate());
+//        holder.tvDate.setText(getListFilm().get(position).getDate());
         holder.tvOverview.setText(getListFilm().get(position).getOverview());
+        holder.btn_fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                favoriteFilmHelper = new FavoriteFilmHelper(context);
+//                appPreference = new AppPreference(context);
+
+
+                Film film = getListFilm().get(position);
+
+                favoriteFilmHelper.open();
+
+                favoriteFilmHelper.beginTransaction();
+                try{
+                    favoriteFilmHelper.insertTransactionEng(film);
+                    favoriteFilmHelper.setTransactionSuccess();
+                    Toast.makeText(context, context.getResources().getString(R.string.toast), Toast.LENGTH_SHORT).show();
+                } catch (Exception e){
+                    String TAG = "TAG";
+                    Log.e(TAG, "onClick: Exception");
+                }
+                favoriteFilmHelper.endTransaction();
+
+                favoriteFilmHelper.close();
+            }
+        });
 
         Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w300/"+getListFilm().get(position).getPhoto())
@@ -62,6 +98,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.CategoryViewHo
         TextView tvDate;
         TextView tvOverview;
         ImageView imgPoster;
+        Button btn_fav;
 
         public CategoryViewHolder(View itemView) {
             super(itemView);
@@ -69,6 +106,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.CategoryViewHo
             tvDate = (TextView) itemView.findViewById(R.id.time);
             tvOverview = (TextView) itemView.findViewById(R.id.desc);
             imgPoster = (ImageView) itemView.findViewById(R.id.poster_movie);
+            btn_fav = (Button) itemView.findViewById(R.id.btn_fav);
         }
     }
 
