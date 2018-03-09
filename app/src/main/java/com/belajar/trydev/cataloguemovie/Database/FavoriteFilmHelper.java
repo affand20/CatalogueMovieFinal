@@ -92,6 +92,16 @@ public class FavoriteFilmHelper {
         stmt.clearBindings();
     }
 
+    public boolean checkData(String title){
+        Cursor cursor = database.query(FAVORITE_FILM_ENG,null,JUDUL+" LIKE ?",new String[]{title},null,null,_ID + " ASC",null);
+        cursor.moveToFirst();
+        if (cursor.getCount()>0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public int updateEng(Film film){
         ContentValues args = new ContentValues();
         args.put(JUDUL, film.getName());
@@ -115,6 +125,8 @@ public class FavoriteFilmHelper {
                 null,
                 null);
     }
+
+
 
     public Cursor queryProvider(){
         return database.query(FAVORITE_FILM_ENG,

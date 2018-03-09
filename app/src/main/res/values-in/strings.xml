@@ -20,5 +20,6 @@
 
     <string name="toast">Berhasil menambahkan ke favorit!</string>
     <string name="delete">Hapus dari Favorit</string>
+    <string name="available">Film sudah ada di database</string>
 
 </resources>

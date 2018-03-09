@@ -68,13 +68,17 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.CategoryViewHo
                 favoriteFilmHelper.open();
 
                 favoriteFilmHelper.beginTransaction();
-                try{
-                    favoriteFilmHelper.insertTransactionEng(film);
-                    favoriteFilmHelper.setTransactionSuccess();
-                    Toast.makeText(context, context.getResources().getString(R.string.toast), Toast.LENGTH_SHORT).show();
-                } catch (Exception e){
-                    String TAG = "TAG";
-                    Log.e(TAG, "onClick: Exception");
+                if (!favoriteFilmHelper.checkData(film.getName())){
+                    try{
+                        favoriteFilmHelper.insertTransactionEng(film);
+                        favoriteFilmHelper.setTransactionSuccess();
+                        Toast.makeText(context, context.getResources().getString(R.string.toast), Toast.LENGTH_SHORT).show();
+                    } catch (Exception e){
+                        String TAG = "TAG";
+                        Log.e(TAG, "onClick: Exception");
+                    }
+                } else{
+                    Toast.makeText(context, context.getResources().getString(R.string.available), Toast.LENGTH_SHORT).show();
                 }
                 favoriteFilmHelper.endTransaction();
 
