@@ -22,4 +22,7 @@
     <string name="delete">Hapus dari Favorit</string>
     <string name="available">Film sudah ada di database</string>
 
+    <string name="daily_notif"> merindukanmu</string>
+    <string name="release_today">Hari ini %s rilis</string>
+
 </resources>

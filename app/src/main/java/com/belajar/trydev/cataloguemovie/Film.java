@@ -1,6 +1,8 @@
 package com.belajar.trydev.cataloguemovie;
 
 import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.belajar.trydev.cataloguemovie.Database.DatabaseContract;
 
@@ -14,7 +16,7 @@ import static com.belajar.trydev.cataloguemovie.Database.DatabaseContract.getCol
  * Created by user on 2/14/2018.
  */
 
-public class Film {
+public class Film implements Parcelable {
     private String name, overview, date, photo, backdrop, vote;
     private int id;
 
@@ -102,4 +104,42 @@ public class Film {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeString(this.overview);
+        dest.writeString(this.date);
+        dest.writeString(this.photo);
+        dest.writeString(this.backdrop);
+        dest.writeString(this.vote);
+        dest.writeInt(this.id);
+    }
+
+    protected Film(Parcel in) {
+        this.name = in.readString();
+        this.overview = in.readString();
+        this.date = in.readString();
+        this.photo = in.readString();
+        this.backdrop = in.readString();
+        this.vote = in.readString();
+        this.id = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Film> CREATOR = new Parcelable.Creator<Film>() {
+        @Override
+        public Film createFromParcel(Parcel source) {
+            return new Film(source);
+        }
+
+        @Override
+        public Film[] newArray(int size) {
+            return new Film[size];
+        }
+    };
 }

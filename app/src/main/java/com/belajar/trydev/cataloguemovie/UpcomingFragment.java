@@ -49,6 +49,12 @@ public class UpcomingFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList("listfilm", list_film);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_upcoming, container, false);
     }
@@ -66,11 +72,17 @@ public class UpcomingFragment extends Fragment {
 
         bundle = new Bundle();
 
-        progress.setTitle(getResources().getString(R.string.app_name));
-        progress.setMessage(getResources().getString(R.string.loading));
-        progress.setCancelable(false);
-        progress.show();
-        getListFilm();
+        if (savedInstanceState==null){
+            progress.setTitle(getResources().getString(R.string.app_name));
+            progress.setMessage(getResources().getString(R.string.loading));
+            progress.setCancelable(false);
+            progress.show();
+            getListFilm();
+        } else{
+            list_film = savedInstanceState.getParcelableArrayList("listfilm");
+            list.setListFilm(list_film);
+            rv_upcoming.setAdapter(list);
+        }
 
         ItemClickSupport.addTo(rv_upcoming).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override

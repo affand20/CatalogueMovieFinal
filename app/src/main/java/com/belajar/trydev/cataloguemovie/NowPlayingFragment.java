@@ -52,6 +52,12 @@ public class NowPlayingFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList("listfilm", list_film);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_now_playing, container, false);
     }
@@ -68,11 +74,17 @@ public class NowPlayingFragment extends Fragment {
 
         bundle = new Bundle();
 
-        progress.setTitle(getResources().getString(R.string.app_name));
-        progress.setMessage(getResources().getString(R.string.loading));
-        progress.setCancelable(false);
-        progress.show();
-        getListFilm();
+        if (savedInstanceState==null){
+            progress.setTitle(getResources().getString(R.string.app_name));
+            progress.setMessage(getResources().getString(R.string.loading));
+            progress.setCancelable(true);
+            progress.show();
+            getListFilm();
+        } else{
+            list_film = savedInstanceState.getParcelableArrayList("listfilm");
+            list.setListFilm(list_film);
+            rv_now_playing.setAdapter(list);
+        }
 
         ItemClickSupport.addTo(rv_now_playing).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
@@ -110,6 +122,7 @@ public class NowPlayingFragment extends Fragment {
                         list_film.add(film);
                         Log.d(TAG, "list length: "+list_film.size());
                     }
+
                     list.setListFilm(list_film);
                     Log.d(TAG, "tes: "+list.getListFilm());
                     rv_now_playing.setAdapter(list);
@@ -129,6 +142,7 @@ public class NowPlayingFragment extends Fragment {
 
             }
         });
+
     }
 
     private void showSelectedFilm(Film film){

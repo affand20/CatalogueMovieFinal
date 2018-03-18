@@ -23,4 +23,10 @@
     <string name="first_run">first_run</string>
     <string name="delete">Remove Favorite</string>
     <string name="available">Film already added to database</string>
+    <string name="appwidget_text">My Favorite Film</string>
+    <string name="add_widget">Add widget</string>
+    <string name="empty_text">NO DATA</string>
+
+    <string name="daily_notif"> is missing you</string>
+    <string name="release_today">Today %s release</string>
 </resources>

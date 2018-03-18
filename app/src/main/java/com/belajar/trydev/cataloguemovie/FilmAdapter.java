@@ -2,6 +2,7 @@ package com.belajar.trydev.cataloguemovie;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -73,6 +74,9 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.CategoryViewHo
                         favoriteFilmHelper.insertTransactionEng(film);
                         favoriteFilmHelper.setTransactionSuccess();
                         Toast.makeText(context, context.getResources().getString(R.string.toast), Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(context, FavoriteFilmWidget.class);
+                        i.setAction(FavoriteFilmWidget.UPDATE_WIDGET);
+                        context.sendBroadcast(i);
                     } catch (Exception e){
                         String TAG = "TAG";
                         Log.e(TAG, "onClick: Exception");
