@@ -1,4 +1,4 @@
-package com.belajar.trydev.cataloguemovie;
+package com.belajar.trydev.cataloguemovie.Reminder;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,6 +11,10 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.belajar.trydev.cataloguemovie.BuildConfig;
+import com.belajar.trydev.cataloguemovie.Film;
+import com.belajar.trydev.cataloguemovie.MainActivity;
+import com.belajar.trydev.cataloguemovie.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 

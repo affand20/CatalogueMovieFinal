@@ -1,24 +1,20 @@
-package com.belajar.trydev.cataloguemovie;
+package com.belajar.trydev.cataloguemovie.Adapter;
 
 
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.belajar.trydev.cataloguemovie.Database.FavoriteFilmHelper;
-import com.belajar.trydev.cataloguemovie.Prefs.AppPreference;
+import com.belajar.trydev.cataloguemovie.Film;
+import com.belajar.trydev.cataloguemovie.R;
 import com.bumptech.glide.Glide;
-
-import java.util.ArrayList;
 
 /**
  * Created by user on 2/14/2018.
@@ -30,13 +26,13 @@ public class FilmAdapterCursor extends RecyclerView.Adapter<FilmAdapterCursor.Ca
 
     FavoriteFilmHelper favoriteFilmHelper;
 
-    void setListFilm(Cursor listFilm){
+    public void setListFilm(Cursor listFilm){
         this.listFilm = listFilm;
     }
 
     private Cursor listFilm;
 
-    FilmAdapterCursor(Context context){
+    public FilmAdapterCursor(Context context){
         this.context = context;
     }
 
@@ -46,7 +42,7 @@ public class FilmAdapterCursor extends RecyclerView.Adapter<FilmAdapterCursor.Ca
         return new CategoryViewHolder(itemRow);
     }
 
-    protected Film getItem(int position){
+    public Film getItem(int position){
         if (!listFilm.moveToPosition(position)){
             throw new IllegalStateException("Position Invalid");
         }

@@ -1,8 +1,6 @@
 package com.belajar.trydev.cataloguemovie;
 
-import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,8 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.belajar.trydev.cataloguemovie.Adapter.FilmAdapterCursor;
+
 import static com.belajar.trydev.cataloguemovie.Database.DatabaseContract.CONTENT_URI;
-import static com.belajar.trydev.cataloguemovie.Database.DatabaseContract.FAVORITE_FILM_ENG;
 
 /**
  * Created by user on 3/6/2018.

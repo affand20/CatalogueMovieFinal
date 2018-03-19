@@ -1,4 +1,4 @@
-package com.belajar.trydev.cataloguemovie;
+package com.belajar.trydev.cataloguemovie.Reminder;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+
+import com.belajar.trydev.cataloguemovie.MainActivity;
+import com.belajar.trydev.cataloguemovie.R;
 
 /**
  * Created by user on 3/18/2018.

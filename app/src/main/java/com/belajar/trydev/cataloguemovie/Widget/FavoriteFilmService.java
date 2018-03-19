@@ -1,4 +1,4 @@
-package com.belajar.trydev.cataloguemovie;
+package com.belajar.trydev.cataloguemovie.Widget;
 
 import android.content.Intent;
 import android.widget.RemoteViewsService;

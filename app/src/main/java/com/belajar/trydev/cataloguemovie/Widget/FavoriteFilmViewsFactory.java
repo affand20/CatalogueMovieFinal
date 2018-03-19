@@ -1,10 +1,9 @@
-package com.belajar.trydev.cataloguemovie;
+package com.belajar.trydev.cataloguemovie.Widget;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +12,8 @@ import android.widget.RemoteViewsService;
 import android.widget.Toast;
 
 import com.belajar.trydev.cataloguemovie.Database.FavoriteFilmHelper;
+import com.belajar.trydev.cataloguemovie.Film;
+import com.belajar.trydev.cataloguemovie.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 

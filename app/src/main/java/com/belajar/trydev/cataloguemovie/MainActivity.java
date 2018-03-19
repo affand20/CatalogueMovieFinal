@@ -4,7 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,11 +18,10 @@ import android.support.v4.app.Fragment;
 import android.widget.SearchView;
 
 import com.belajar.trydev.cataloguemovie.Database.FavoriteFilmHelper;
+import com.belajar.trydev.cataloguemovie.Reminder.NotificationDailyReceiver;
+import com.belajar.trydev.cataloguemovie.Reminder.NotificationReleaseReceiver;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

@@ -1,4 +1,4 @@
-package com.belajar.trydev.cataloguemovie;
+package com.belajar.trydev.cataloguemovie.Widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -10,7 +10,7 @@ import android.net.Uri;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import com.belajar.trydev.cataloguemovie.Database.FavoriteFilmHelper;
+import com.belajar.trydev.cataloguemovie.R;
 
 /**
  * Implementation of App Widget functionality.
